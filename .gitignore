@@ -1,0 +1,16 @@
+# Dependências e variáveis de ambiente
+node_modules/
+.env
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configurações de editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
