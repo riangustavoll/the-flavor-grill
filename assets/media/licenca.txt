@@ -1,0 +1,11 @@
+Vídeo "Como pedir" — The Flavor Grill
+
+Vídeo silencioso original, criado para este projeto. É composto por três telas
+com capturas do próprio site, a logo da marca e textos escritos para o projeto.
+Não contém imagens, músicas ou gravações de terceiros.
+
+Uso, reprodução e distribuição autorizados neste projeto.
+
+Fontes usadas nas telas (incorporadas como pixels no vídeo):
+- Bebas Neue — SIL Open Font License 1.1
+- Montserrat — SIL Open Font License 1.1
