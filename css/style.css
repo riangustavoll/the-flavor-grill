@@ -1,0 +1,1418 @@
+/*
+  style.css — The Flavor Grill
+  Identidade visual baseada no cardápio impresso da marca:
+  fundo pêssego, azul-marinho, laranja e títulos condensados.
+*/
+
+/* ==========================================================
+   1. Fontes (arquivos locais em assets/fonts)
+   ========================================================== */
+@font-face {
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/bebas-neue-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Modak";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/modak-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("../assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../assets/fonts/montserrat-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/montserrat-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/montserrat-latin-700-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("../assets/fonts/montserrat-latin-800-normal.woff2") format("woff2");
+}
+
+/* ==========================================================
+   2. Variáveis e base
+   ========================================================== */
+:root {
+    --cor-pessego: #efd1b7;
+    --cor-pessego-claro: #f5dfcb;
+    --cor-pessego-escuro: #e6c1a3;
+    --cor-marinho: #131d2f;
+    --cor-marinho-claro: #24314a;
+    --cor-laranja: #ec6640;
+    --cor-laranja-escuro: #d9532e;
+    --cor-verde: #1f9d55;
+    --cor-erro: #b3261e;
+    --raio: 16px;
+    --fonte-titulo: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    --fonte-texto: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --altura-topo: 64px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: var(--fonte-texto);
+    background: var(--cor-pessego);
+    color: var(--cor-marinho);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+}
+
+/* Foco visível em todos os elementos interativos (navegação por Tab) */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+video:focus-visible {
+    outline: 3px solid var(--cor-laranja);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.container {
+    width: min(1120px, 100% - 40px);
+    margin-inline: auto;
+}
+
+/* Texto disponível apenas para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ==========================================================
+   3. Cabeçalho e menu de navegação
+   ========================================================== */
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(239, 209, 183, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--cor-marinho);
+}
+
+.topo .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: var(--altura-topo);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.marca img {
+    width: 46px;
+    height: auto;
+}
+
+.marca span {
+    font-family: var(--fonte-titulo);
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.menu-principal ul {
+    display: flex;
+    gap: 22px;
+}
+
+.menu-principal a {
+    display: block;
+    padding: 6px 2px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus-visible {
+    color: var(--cor-laranja-escuro);
+    border-bottom-color: var(--cor-laranja);
+}
+
+.acoes-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botão do menu hambúrguer: só aparece em telas pequenas */
+.botao-menu {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 2px solid var(--cor-marinho);
+    place-items: center;
+}
+
+.botao-menu:hover {
+    background: var(--cor-pessego-escuro);
+}
+
+.botao-menu .linhas,
+.botao-menu .linhas::before,
+.botao-menu .linhas::after {
+    display: block;
+    width: 20px;
+    height: 2.5px;
+    background: var(--cor-marinho);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.botao-menu .linhas {
+    position: relative;
+}
+
+.botao-menu .linhas::before,
+.botao-menu .linhas::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.botao-menu .linhas::before {
+    top: -6px;
+}
+
+.botao-menu .linhas::after {
+    top: 6px;
+}
+
+/* Ícone vira "X" quando o menu está aberto */
+.botao-menu[aria-expanded="true"] .linhas {
+    background: transparent;
+}
+
+.botao-menu[aria-expanded="true"] .linhas::before {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.botao-menu[aria-expanded="true"] .linhas::after {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.botao-sacola {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.botao-sacola:hover {
+    background: var(--cor-marinho-claro);
+}
+
+.contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: var(--cor-laranja);
+    color: #fff;
+    font-size: 12px;
+}
+
+/* ==========================================================
+   4. Botões
+   ========================================================== */
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 26px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+/* Ação primária: laranja com sombra sólida */
+.botao-primario {
+    background: var(--cor-laranja);
+    color: #fff;
+    box-shadow: 0 5px 0 var(--cor-marinho);
+}
+
+.botao-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 var(--cor-marinho);
+}
+
+.botao-primario:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--cor-marinho);
+}
+
+/* Ação secundária: apenas contorno */
+.botao-secundario {
+    border: 2px solid var(--cor-marinho);
+}
+
+.botao-secundario:hover {
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+}
+
+.botao-whatsapp {
+    background: var(--cor-verde);
+    color: #fff;
+    box-shadow: 0 5px 0 var(--cor-marinho);
+}
+
+.botao-whatsapp:hover {
+    filter: brightness(1.06);
+}
+
+.botao-largo {
+    width: 100%;
+}
+
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.link-acao {
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: underline;
+    opacity: 0.75;
+}
+
+.link-acao:hover {
+    opacity: 1;
+}
+
+/* ==========================================================
+   5. Abertura (hero)
+   ========================================================== */
+.abertura {
+    position: relative;
+    overflow: hidden;
+    padding: 84px 0 72px;
+}
+
+.pontos {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    pointer-events: none;
+    background-image: radial-gradient(circle, var(--cor-ponto) 5px, transparent 5.5px);
+    background-size: 30px 30px;
+}
+
+.pontos-topo {
+    top: 0;
+    --cor-ponto: var(--cor-laranja);
+    -webkit-mask-image: linear-gradient(#000, transparent);
+    mask-image: linear-gradient(#000, transparent);
+}
+
+.pontos-base {
+    bottom: 0;
+    --cor-ponto: var(--cor-marinho);
+    -webkit-mask-image: linear-gradient(transparent, #000);
+    mask-image: linear-gradient(transparent, #000);
+}
+
+.abertura .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 32px;
+}
+
+.abertura h1 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: clamp(64px, 11vw, 132px);
+    line-height: 0.86;
+    letter-spacing: 1px;
+}
+
+.abertura h1 em {
+    font-style: normal;
+    color: var(--cor-laranja);
+}
+
+.chamada {
+    max-width: 460px;
+    margin: 20px 0 28px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.grupo-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.mascote {
+    justify-self: center;
+    width: min(380px, 80%);
+    filter: drop-shadow(0 18px 24px rgba(19, 29, 47, 0.22));
+    animation: flutuar 5s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    50% {
+        transform: translateY(-10px) rotate(-1.5deg);
+    }
+}
+
+/* ==========================================================
+   6. Como pedir (passos com ícones SVG)
+   ========================================================== */
+.passos {
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    padding: 26px 0;
+}
+
+.passos ol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.passos li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.icone-passo {
+    flex: none;
+    width: 52px;
+    height: 52px;
+}
+
+/* ==========================================================
+   7. Cardápio
+   ========================================================== */
+.secao-cardapio {
+    padding: 56px 0 72px;
+}
+
+.grade-cardapio {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 92px;
+    gap: 32px;
+}
+
+.grade-cardapio > div {
+    min-width: 0;
+}
+
+.faixa-lateral {
+    position: sticky;
+    top: 88px;
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 120px);
+    max-height: 720px;
+    overflow: hidden;
+    background: var(--cor-laranja);
+    border-radius: 12px;
+}
+
+.faixa-lateral span {
+    font-family: "Modak", var(--fonte-titulo);
+    font-size: 84px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: var(--cor-marinho);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg) translateX(-4px);
+}
+
+.titulo-secao {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 64px);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.subtitulo {
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 22px;
+}
+
+.abas {
+    position: sticky;
+    top: var(--altura-topo);
+    z-index: 5;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 12px 0;
+    margin-bottom: 12px;
+    background: var(--cor-pessego);
+}
+
+.abas::-webkit-scrollbar {
+    display: none;
+}
+
+.aba {
+    flex: none;
+    white-space: nowrap;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--cor-marinho);
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.aba:hover {
+    background: var(--cor-pessego-escuro);
+}
+
+.aba[aria-current="true"] {
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+}
+
+.categoria {
+    margin-bottom: 44px;
+}
+
+.categoria h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 34px;
+    letter-spacing: 0.5px;
+}
+
+.categoria h3::after {
+    content: "";
+    flex: 1;
+    border-bottom: 4px dotted var(--cor-marinho);
+    opacity: 0.6;
+    transform: translateY(-6px);
+}
+
+.itens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 20px 18px;
+    background: var(--cor-pessego-claro);
+    border: 2px solid var(--cor-marinho);
+    border-radius: var(--raio);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--cor-marinho);
+}
+
+.item h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 0.95;
+    letter-spacing: 0.5px;
+}
+
+.item h4 .destaque {
+    color: var(--cor-laranja);
+}
+
+.item p {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.item-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.preco {
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.botao-adicionar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: var(--cor-laranja);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: 0 3px 0 var(--cor-marinho);
+    transition: transform 0.1s;
+}
+
+.botao-adicionar:hover {
+    background: var(--cor-laranja-escuro);
+}
+
+.botao-adicionar:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--cor-marinho);
+}
+
+.etiqueta {
+    align-self: flex-start;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Cards de promoção com borda pontilhada (estilo cupom) */
+.item-promocao {
+    justify-content: center;
+    background: var(--cor-laranja);
+    color: #fff;
+    border: 4px dashed var(--cor-marinho);
+}
+
+.item-promocao:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.item-promocao h4 .destaque {
+    color: var(--cor-marinho);
+}
+
+.item-promocao p {
+    opacity: 1;
+}
+
+.item-promocao .etiqueta {
+    color: #fff;
+}
+
+.banner-combo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 44px;
+    padding: 22px 24px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    border: 4px dashed var(--cor-laranja);
+    border-radius: var(--raio);
+}
+
+.banner-combo .valor {
+    font-family: var(--fonte-titulo);
+    font-size: 44px;
+    line-height: 1;
+    color: var(--cor-laranja);
+}
+
+.banner-combo .texto {
+    flex: 1;
+    min-width: 220px;
+}
+
+.banner-combo strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+
+/* ==========================================================
+   8. Vídeo de apresentação
+   ========================================================== */
+.secao-video {
+    padding: 56px 0;
+    background: var(--cor-pessego-claro);
+    border-top: 2px solid var(--cor-marinho);
+}
+
+.secao-video .container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 32px;
+}
+
+.secao-video p {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.secao-video video {
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--cor-marinho);
+    border-radius: var(--raio);
+    background: var(--cor-marinho);
+}
+
+/* ==========================================================
+   9. Informações e rodapé
+   ========================================================== */
+.informacoes {
+    padding: 56px 0;
+    background: var(--cor-pessego-escuro);
+    border-top: 2px solid var(--cor-marinho);
+}
+
+.informacoes .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cartao-info {
+    padding: 22px;
+    background: var(--cor-pessego-claro);
+    border: 2px solid var(--cor-marinho);
+    border-radius: var(--raio);
+}
+
+.cartao-info h3 {
+    margin-bottom: 8px;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.cartao-info p {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cartao-info a {
+    font-weight: 800;
+    color: var(--cor-laranja-escuro);
+    text-decoration: none;
+}
+
+.cartao-info a:hover {
+    text-decoration: underline;
+}
+
+.rodape {
+    padding: 28px 0 110px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.rodape .slogan {
+    margin-bottom: 6px;
+    font-family: var(--fonte-titulo);
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: var(--cor-laranja);
+}
+
+.rodape details {
+    max-width: 560px;
+    margin: 18px auto 0;
+    text-align: left;
+}
+
+.rodape summary {
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.rodape details p {
+    margin: 10px 0;
+    opacity: 0.85;
+}
+
+.rodape .botao {
+    padding: 12px 20px;
+    font-size: 14px;
+}
+
+/* ==========================================================
+   10. Barra flutuante da sacola (celular)
+   ========================================================== */
+.barra-sacola {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 25;
+}
+
+.barra-sacola button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: var(--cor-laranja);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 5px 0 var(--cor-marinho), 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================
+   11. Fundo escuro, sacola lateral e janela do item
+   ========================================================== */
+.fundo-escuro {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(19, 29, 47, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.fundo-escuro.aberto {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sacola {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    width: min(440px, 100%);
+    background: var(--cor-pessego);
+    border-left: 2px solid var(--cor-marinho);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0.25s;
+}
+
+.sacola.aberto {
+    transform: none;
+    visibility: visible;
+}
+
+.sacola-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 2px solid var(--cor-marinho);
+}
+
+.sacola-topo h2 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.botao-fechar {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.botao-fechar:hover {
+    background: var(--cor-pessego-escuro);
+}
+
+.sacola-corpo {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px 24px;
+}
+
+.sacola-rodape {
+    padding: 14px 20px 18px;
+    border-top: 2px solid var(--cor-marinho);
+    background: var(--cor-pessego-claro);
+}
+
+.sacola-vazia {
+    padding: 40px 10px;
+    text-align: center;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.sacola-vazia img {
+    width: 120px;
+    margin: 0 auto 14px;
+}
+
+.linha {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    padding: 14px 0;
+    border-bottom: 2px dotted rgba(19, 29, 47, 0.35);
+}
+
+.linha-nome,
+.linha-preco {
+    font-weight: 800;
+}
+
+.linha-preco {
+    text-align: right;
+}
+
+.linha-detalhes {
+    grid-column: 1 / -1;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.75;
+}
+
+.linha-controles {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantidade {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 6px;
+    border: 2px solid var(--cor-marinho);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.quantidade button {
+    width: 34px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.quantidade button:hover {
+    background: var(--cor-pessego-escuro);
+}
+
+.quantidade span {
+    min-width: 26px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.aviso-taxa {
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.75;
+}
+
+/* Formulário de finalização */
+.formulario {
+    display: grid;
+    gap: 14px;
+}
+
+.formulario fieldset {
+    display: grid;
+    gap: 10px;
+    border: 0;
+}
+
+.formulario legend {
+    margin-bottom: 6px;
+    font-family: var(--fonte-titulo);
+    font-size: 24px;
+}
+
+.campo {
+    display: grid;
+    gap: 5px;
+}
+
+.campo label,
+.rotulo {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--cor-marinho);
+    border-radius: 10px;
+    background: #fff8f2;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.campo textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: 3px solid var(--cor-laranja);
+    outline-offset: 1px;
+}
+
+/* Campo inválido só é destacado depois que o usuário interage */
+.campo input:user-invalid {
+    border-color: var(--cor-erro);
+    background: #fff0ee;
+}
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+/* Seletor de opções (radio estilizado como botões) */
+.opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border: 2px solid var(--cor-marinho);
+    border-radius: 12px;
+}
+
+.opcoes-tres {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.opcoes input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.opcoes label {
+    display: block;
+    padding: 11px 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border-right: 2px solid var(--cor-marinho);
+}
+
+.opcoes label:last-of-type {
+    border-right: 0;
+}
+
+.opcoes input:checked + label {
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+}
+
+.opcoes input:focus-visible + label {
+    outline: 3px solid var(--cor-laranja);
+    outline-offset: -3px;
+}
+
+.voltar {
+    justify-self: start;
+    margin-bottom: 6px;
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+/* Janela de personalização do item */
+.janela {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 60;
+    width: min(480px, 100% - 24px);
+    max-height: calc(100% - 24px);
+    overflow-y: auto;
+    padding: 22px;
+    background: var(--cor-pessego);
+    border: 2px solid var(--cor-marinho);
+    border-radius: 20px;
+    box-shadow: 0 8px 0 var(--cor-marinho);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -46%) scale(0.98);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+}
+
+.janela.aberto {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+}
+
+.janela h3 {
+    padding-right: 40px;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 0.95;
+}
+
+.janela .descricao {
+    margin: 8px 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.janela .botao-fechar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.janela .campo {
+    margin-bottom: 12px;
+}
+
+.opcao-combo {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 14px;
+    border: 2px solid var(--cor-marinho);
+    border-radius: 12px;
+    background: var(--cor-pessego-claro);
+    cursor: pointer;
+}
+
+.opcao-combo input {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    accent-color: var(--cor-laranja);
+}
+
+.opcao-combo b {
+    display: block;
+}
+
+.opcao-combo small {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.janela-rodape {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.janela-rodape .botao {
+    flex: 1;
+    justify-content: space-between;
+    padding: 14px 20px;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* Aviso rápido (toast) */
+.aviso {
+    position: fixed;
+    left: 50%;
+    top: 78px;
+    z-index: 70;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -12px);
+    transition: 0.2s;
+}
+
+.aviso.visivel {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/*
+  Elementos com o atributo hidden precisam vencer o display
+  definido pelas classes acima (sem usar !important).
+*/
+.botao[hidden],
+.campo[hidden],
+.opcao-combo[hidden],
+.formulario fieldset[hidden],
+.barra-sacola[hidden],
+.link-acao[hidden],
+.sacola-corpo[hidden] {
+    display: none;
+}
+
+/* ==========================================================
+   12. Responsividade
+   ========================================================== */
+@media (max-width: 860px) {
+    .grade-cardapio {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .faixa-lateral {
+        position: static;
+        order: -1;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .faixa-lateral span {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 56px;
+    }
+
+    .secao-cardapio .titulo-secao {
+        display: none;
+    }
+
+    .itens,
+    .informacoes .container,
+    .secao-video .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    /* Menu hambúrguer: a lista vira um painel abaixo do cabeçalho */
+    .botao-menu {
+        display: grid;
+    }
+
+    .menu-principal {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        background: var(--cor-pessego);
+        border-bottom: 2px solid var(--cor-marinho);
+        box-shadow: 0 12px 24px rgba(19, 29, 47, 0.15);
+    }
+
+    .menu-principal.aberto {
+        display: block;
+    }
+
+    .menu-principal ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 20px 14px;
+    }
+
+    .menu-principal a {
+        padding: 14px 4px;
+        font-size: 16px;
+        border-bottom: 2px dotted rgba(19, 29, 47, 0.3);
+    }
+
+    .menu-principal li:last-child a {
+        border-bottom: 0;
+    }
+
+    .marca span {
+        font-size: 22px;
+    }
+
+    .marca img {
+        width: 40px;
+    }
+
+    .botao-sacola {
+        padding: 9px 14px;
+    }
+
+    .abertura {
+        padding: 36px 0 56px;
+        text-align: center;
+    }
+
+    .abertura .container {
+        grid-template-columns: 1fr;
+    }
+
+    .mascote {
+        order: -1;
+        width: 230px;
+    }
+
+    .chamada {
+        margin-inline: auto;
+    }
+
+    .grupo-botoes {
+        justify-content: center;
+    }
+
+    .passos ol {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .icone-passo {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (min-width: 761px) {
+    .rodape {
+        padding-bottom: 28px;
+    }
+
+    .barra-sacola {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .texto-sacola {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .marca span {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .mascote {
+        animation: none;
+    }
+}

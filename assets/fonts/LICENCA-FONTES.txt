@@ -1,0 +1,9 @@
+Fontes usadas no projeto
+
+- Bebas Neue — Copyright Dharma Type. SIL Open Font License 1.1
+- Modak — Copyright Ek Type. SIL Open Font License 1.1
+- Montserrat — Copyright The Montserrat Project Authors. SIL Open Font License 1.1
+
+Os arquivos .woff2 foram obtidos dos pacotes @fontsource (npm), que distribuem
+as fontes do Google Fonts. Texto completo da licença:
+https://openfontlicense.org/open-font-license-official-text/

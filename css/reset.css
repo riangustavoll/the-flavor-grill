@@ -1,0 +1,43 @@
+/*
+  reset.css
+  Remove diferenças de estilo padrão entre navegadores
+  e define um box model consistente para todo o projeto.
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+img,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+ol,
+ul {
+    list-style: none;
+}
