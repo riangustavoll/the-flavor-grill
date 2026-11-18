@@ -74,7 +74,11 @@
     --cor-marinho-claro: #24314a;
     --cor-laranja: #ec6640;
     --cor-laranja-escuro: #d9532e;
-    --cor-verde: #1f9d55;
+    --cor-laranja-claro: #f07a58;
+    /* Laranja mais escuro para TEXTO sobre o pêssego: contraste mínimo de 4,5:1 (WCAG AA) */
+    --cor-laranja-texto: #ad3f1b;
+    /* Verde escurecido para o texto branco do botão do WhatsApp passar de 4,5:1 */
+    --cor-verde: #15803d;
     --cor-erro: #b3261e;
     --raio: 16px;
     --fonte-titulo: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
@@ -183,7 +187,7 @@ video:focus-visible {
 
 .menu-principal a:hover,
 .menu-principal a:focus-visible {
-    color: var(--cor-laranja-escuro);
+    color: var(--cor-laranja-texto);
     border-bottom-color: var(--cor-laranja);
 }
 
@@ -274,7 +278,7 @@ video:focus-visible {
     padding: 0 6px;
     border-radius: 11px;
     background: var(--cor-laranja);
-    color: #fff;
+    color: var(--cor-marinho);
     font-size: 12px;
 }
 
@@ -297,7 +301,8 @@ video:focus-visible {
 /* Ação primária: laranja com sombra sólida */
 .botao-primario {
     background: var(--cor-laranja);
-    color: #fff;
+    /* Azul-marinho sobre laranja: contraste 5,26:1 (o branco dava só 3,21:1) */
+    color: var(--cor-marinho);
     box-shadow: 0 5px 0 var(--cor-marinho);
 }
 
@@ -351,6 +356,25 @@ video:focus-visible {
     opacity: 1;
 }
 
+/* Aviso de privacidade no formulário */
+.nota-privacidade {
+    display: grid;
+    justify-items: start;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--cor-marinho);
+    border-radius: 0 10px 10px 0;
+    background: var(--cor-pessego-claro);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.nota-privacidade .link-acao {
+    padding: 10px 0;
+    margin: -6px 0 -10px;
+}
+
 /* ==========================================================
    5. Abertura (hero)
    ========================================================== */
@@ -402,7 +426,7 @@ video:focus-visible {
 
 .abertura h1 em {
     font-style: normal;
-    color: var(--cor-laranja);
+    color: var(--cor-laranja-texto);
 }
 
 .chamada {
@@ -604,7 +628,7 @@ video:focus-visible {
 }
 
 .item h4 .destaque {
-    color: var(--cor-laranja);
+    color: var(--cor-laranja-texto);
 }
 
 .item p {
@@ -636,7 +660,7 @@ video:focus-visible {
     padding: 11px 18px;
     border-radius: 999px;
     background: var(--cor-laranja);
-    color: #fff;
+    color: var(--cor-marinho);
     font-weight: 800;
     font-size: 14px;
     box-shadow: 0 3px 0 var(--cor-marinho);
@@ -644,7 +668,7 @@ video:focus-visible {
 }
 
 .botao-adicionar:hover {
-    background: var(--cor-laranja-escuro);
+    background: var(--cor-laranja-claro);
 }
 
 .botao-adicionar:active {
@@ -668,7 +692,7 @@ video:focus-visible {
 .item-promocao {
     justify-content: center;
     background: var(--cor-laranja);
-    color: #fff;
+    color: var(--cor-marinho);
     border: 4px dashed var(--cor-marinho);
 }
 
@@ -686,7 +710,7 @@ video:focus-visible {
 }
 
 .item-promocao .etiqueta {
-    color: #fff;
+    color: var(--cor-pessego);
 }
 
 .banner-combo {
@@ -788,7 +812,7 @@ video:focus-visible {
 
 .cartao-info a {
     font-weight: 800;
-    color: var(--cor-laranja-escuro);
+    color: var(--cor-laranja-texto);
     text-decoration: none;
 }
 
@@ -854,7 +878,7 @@ video:focus-visible {
     padding: 16px 20px;
     border-radius: 14px;
     background: var(--cor-laranja);
-    color: #fff;
+    color: var(--cor-marinho);
     font-weight: 800;
     box-shadow: 0 5px 0 var(--cor-marinho), 0 10px 30px rgba(0, 0, 0, 0.25);
 }
