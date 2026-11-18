@@ -38,6 +38,32 @@ function lembrarDadosDoCliente() {
         dados[campo] = lerCampo(campo);
     }
     salvarNoArmazenamento(CHAVE_CLIENTE, dados);
+    atualizarBotaoEsquecer();
+}
+
+/* ---------- Privacidade: apagar os dados salvos ---------- */
+
+const botaoEsquecer = document.getElementById("esquecer-dados");
+
+function temDadosSalvos() {
+    const dadosSalvos = lerDoArmazenamento(CHAVE_CLIENTE, {});
+    return CAMPOS_LEMBRADOS.some(campo => dadosSalvos[campo]);
+}
+
+// O botão só aparece quando existe algo salvo para apagar
+function atualizarBotaoEsquecer() {
+    botaoEsquecer.hidden = !temDadosSalvos();
+}
+
+// Apaga nome e endereço do navegador e limpa os campos (a sacola continua)
+function esquecerDadosDoCliente() {
+    removerDoArmazenamento(CHAVE_CLIENTE);
+    for (const campo of CAMPOS_LEMBRADOS) {
+        formularioPedido.elements[campo].value = "";
+    }
+    atualizarBotaoEsquecer();
+    mostrarAviso("Seus dados foram apagados deste aparelho.");
+    formularioPedido.elements.nome.focus();
 }
 
 function preencherDadosSalvos() {
@@ -107,6 +133,7 @@ function criarLinkWhatsApp(mensagem) {
 
 formularioPedido.addEventListener("change", atualizarFormulario);
 formularioPedido.addEventListener("input", lembrarDadosDoCliente);
+botaoEsquecer.addEventListener("click", esquecerDadosDoCliente);
 
 // O evento submit só acontece se todos os campos obrigatórios estiverem válidos
 formularioPedido.addEventListener("submit", function (evento) {
@@ -129,4 +156,5 @@ formularioPedido.addEventListener("submit", function (evento) {
 document.getElementById("link-whatsapp").href = criarLinkWhatsApp("Olá! Vim pelo site da The Flavor Grill. 🍔");
 
 preencherDadosSalvos();
+atualizarBotaoEsquecer();
 atualizarFormulario();
