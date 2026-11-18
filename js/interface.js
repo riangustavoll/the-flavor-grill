@@ -58,12 +58,17 @@ window.addEventListener("scroll", atualizarAbaAtiva, { passive: true });
 
 let elementoComFocoAntes = null;
 
+// Partes da página que ficam "inertes" (sem foco nem clique) enquanto uma camada está aberta,
+// para o Tab do teclado não sair da janela ou da sacola
+const PARTES_DA_PAGINA = document.querySelectorAll(".pular-conteudo, body > header, body > main, body > footer, #barra-sacola");
+
 function abrirCamada(elemento) {
     elementoComFocoAntes = document.activeElement;
     elemento.classList.add("aberto");
     elemento.setAttribute("aria-hidden", "false");
     fundoEscuro.classList.add("aberto");
     document.body.style.overflow = "hidden";
+    PARTES_DA_PAGINA.forEach(parte => parte.inert = true);
 }
 
 function fecharCamadas() {
@@ -73,6 +78,7 @@ function fecharCamadas() {
     });
     fundoEscuro.classList.remove("aberto");
     document.body.style.overflow = "";
+    PARTES_DA_PAGINA.forEach(parte => parte.inert = false);
     // Devolve o foco para o botão que abriu a camada (importante para quem navega pelo teclado)
     if (elementoComFocoAntes) {
         elementoComFocoAntes.focus();

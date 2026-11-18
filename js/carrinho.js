@@ -235,6 +235,8 @@ function mostrarEtapaFinalizar() {
 function abrirSacola() {
     mostrarEtapaItens();
     abrirCamada(sacola);
+    // Leva o foco para dentro da sacola (quem usa teclado ou leitor de tela começa por ela)
+    sacola.querySelector("[data-fechar]").focus();
 }
 
 document.getElementById("abrir-sacola").addEventListener("click", abrirSacola);
