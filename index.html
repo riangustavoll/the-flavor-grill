@@ -256,6 +256,11 @@
                         <label for="cliente-nome">Nome *</label>
                         <input type="text" id="cliente-nome" name="nome" autocomplete="name" minlength="2" maxlength="60" required>
                     </div>
+                    <!-- Transparência sobre os dados salvos e opção de apagá-los (privacidade) -->
+                    <div class="nota-privacidade">
+                        <p>Seu nome e endereço ficam salvos <b>só neste aparelho</b>, para agilizar o próximo pedido. Eles só saem daqui quando você envia o pedido no WhatsApp.</p>
+                        <button type="button" class="link-acao" id="esquecer-dados" hidden>Esquecer meus dados</button>
+                    </div>
                 </fieldset>
 
                 <!-- Quando o cliente escolhe "Retirar no local", este grupo fica desativado e sai da validação -->

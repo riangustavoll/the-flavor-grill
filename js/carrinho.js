@@ -33,6 +33,14 @@ function salvarNoArmazenamento(chave, valor) {
     }
 }
 
+function removerDoArmazenamento(chave) {
+    try {
+        localStorage.removeItem(chave);
+    } catch (erro) {
+        console.warn("Não foi possível apagar do navegador:", erro);
+    }
+}
+
 // Ao abrir a página, recupera a sacola salva (ignorando itens que saíram do cardápio)
 let carrinho = lerDoArmazenamento(CHAVE_CARRINHO, []).filter(linha => buscarItem(linha.id));
 
