@@ -129,6 +129,24 @@ video:focus-visible {
     white-space: nowrap;
 }
 
+/* Link "Pular para o cardápio": escondido até receber o foco do teclado */
+.pular-conteudo {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    font-weight: 800;
+    transform: translateY(-200%);
+}
+
+.pular-conteudo:focus {
+    transform: none;
+}
+
 /* ==========================================================
    3. Cabeçalho e menu de navegação
    ========================================================== */
@@ -920,6 +938,8 @@ video:focus-visible {
 .sacola.aberto {
     transform: none;
     visibility: visible;
+    /* Ao abrir, fica visível na hora (e pode receber o foco); ao fechar, some no fim da animação */
+    transition: transform 0.25s ease, visibility 0s;
 }
 
 .sacola-topo {
@@ -1184,6 +1204,7 @@ video:focus-visible {
 .janela.aberto {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.18s, transform 0.18s, visibility 0s;
     transform: translate(-50%, -50%);
 }
 
