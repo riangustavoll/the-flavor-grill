@@ -4,6 +4,8 @@
 
 🔗 **Site publicado:** https://riangustavoll.github.io/the-flavor-grill/
 
+> **Projeto acadêmico.** Este repositório é a entrega da disciplina Desenvolvimento Front-End para Web (Unipê) e não é usado para vender. A loja de verdade, com pagamento online, está em https://flavorgrill.flavorgrill-pb.workers.dev, em um repositório separado.
+
 ![Abertura do site The Flavor Grill](assets/images/video-poster.webp)
 
 ## Sobre o projeto

@@ -1461,3 +1461,28 @@ video:focus-visible {
         animation: none;
     }
 }
+
+/* Aviso de projeto acadêmico no topo da página */
+.aviso-academico {
+    padding: 10px 16px;
+    background: var(--cor-marinho);
+    color: var(--cor-pessego);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.aviso-academico a {
+    display: inline-block;
+    padding: 12px 2px;
+    margin: -12px 0;
+    color: #fff;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.aviso-academico a:hover,
+.aviso-academico a:focus-visible {
+    color: var(--cor-pessego);
+}
