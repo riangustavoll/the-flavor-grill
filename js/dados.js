@@ -4,8 +4,8 @@
   Para mudar preços, telefone ou itens, edite apenas este arquivo.
 */
 
-// Número no formato internacional, só dígitos: 55 (Brasil) + 83 (DDD) + número
-const NUMERO_WHATSAPP = "5583998650388";
+// Número fictício (projeto acadêmico). Formato internacional, só dígitos: 55 (Brasil) + 83 (DDD) + número
+const NUMERO_WHATSAPP = "5583900000000";
 
 // Valor acrescentado quando o cliente transforma um burguer em combo (batata + refri lata)
 const PRECO_COMBO = 15;
